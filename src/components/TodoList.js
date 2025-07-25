@@ -1,24 +1,27 @@
-import React from 'react'
+import React from 'react';
 
-const TodoList = ({onComplete, todos}) => {
+function TodoList({ todos, onComplete }) {
   return (
     <div>
-      <h2 style={{marginLeft:'37px'}}>Child Component</h2>
+      <h2>Child Component</h2>
       <ul>
         {todos.map(todo => (
-          <li key={todo.id}>
-            {todo.text}
-            {!todo.completed && (
-              <button onClick={()=>onComplete(todo.id)}>
+          <li key={todo.id} style={{ marginBottom: '10px' }}>
+            <span >
+              {todo.text}
+            </span>
+            {todo.completed ? (
+              <span style={{ marginLeft: '10px', color: 'green' }}>✅</span>
+            ) : (
+              <button style={{ marginLeft: '10px' }} onClick={() => onComplete(todo.id)}>
                 Complete
               </button>
             )}
-    
           </li>
         ))}
       </ul>
     </div>
-  )
+  );
 }
 
-export default TodoList
+export default TodoList;
